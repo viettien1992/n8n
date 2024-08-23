@@ -1,5 +1,5 @@
-# Sử dụng image chính thức của n8n
-FROM n8nio/n8n
+# Sử dụng image chính thức của n8n có base là debian
+FROM n8nio/n8n:latest-debian
 
 # Cài đặt các dependencies cần thiết cho Playwright
 RUN apt-get update && apt-get install -y \
@@ -18,9 +18,6 @@ RUN npm install -g playwright
 ENV N8N_BASIC_AUTH_ACTIVE=true
 ENV N8N_BASIC_AUTH_USER=tientv
 ENV N8N_BASIC_AUTH_PASSWORD=030292
-
-# Copy toàn bộ source code vào container (nếu cần)
-# COPY . .
 
 # Chạy n8n
 CMD ["n8n"]
